@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="row justify-content-center">
+    <div class="row justify-content-center m-0">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
@@ -16,18 +16,18 @@
                                         <option @if($year == $selectedYear) selected @endif>{{$year}}</option>
                                     @endforeach
                                 </select>
-                                <button class="btn btn-outline-secondary" type="button">PDF Download</button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="pdfDownload()">PDF Download</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="holidayList">
                         <div class="col-md-12">
                             <ul class="list-group">
                                 @foreach($holidays as $holiday)
                                     <li class="list-group-item">
                                         {{$holiday->date}}
-                                        {{$holiday->name}}
+                                        <span class="ps-5">{{$holiday->name}}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -40,4 +40,16 @@
 
         </div>
     </div>
+
+    <script>
+        // Default export is a4 paper, portrait, using millimeters for units
+        function pdfDownload() {
+            var doc = new jsPDF();
+            doc.addHTML($('#holidayList')[0], 15, 15, {
+                'background': '#fff',
+            }, function() {
+                doc.save('holidays_{{$selectedYear}}.pdf');
+            });
+        }
+    </script>
 @stop
