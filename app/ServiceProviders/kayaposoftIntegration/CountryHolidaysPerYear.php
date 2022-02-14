@@ -19,6 +19,16 @@ class CountryHolidaysPerYear extends holidaysAPI
         $this->country = $countryCode;
     }
 
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    public function getYear()
+    {
+        return $this->year;
+    }
+
     public function getHolidays()
     {
         return $this->guzzle('GET', "?action=getHolidaysForYear&year=$this->year&country=$this->country&holidayType=public_holiday");
