@@ -14,4 +14,7 @@ use App\Http\Controllers\HolidaysController;
 |
 */
 
-Route::get('/', [HolidaysController::class, 'index']);
+Route::get('/', function(){
+    return redirect('holidays');
+});
+Route::get('holidays/{year?}', [HolidaysController::class, 'index']);

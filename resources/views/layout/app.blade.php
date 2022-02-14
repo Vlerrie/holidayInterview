@@ -10,10 +10,10 @@
 </head>
 <body>
 <div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid col-md-8">
             <a class="navbar-brand" href="#">
-                <img src="/img/collivery.net-logo.svg" alt="" width="200" class="d-inline-block align-text-top">
+                <img src="{{'/img/collivery.net-logo.svg'}}" alt="" width="200" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

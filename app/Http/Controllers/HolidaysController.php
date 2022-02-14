@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Holiday;
 
 class HolidaysController extends Controller
 {
-    public function index()
+    public function index($year = null)
     {
-        return view('index');
+        if (!isset($year)) {
+            $year = date('Y');
+        }
+
+        $holidays = Holiday::where('date', 'like', $year . '%')->get();
+        $availableYears = Holiday::selectRaw('LEFT(date, 4) as year')
+            ->distinct('year')
+            ->get()
+            ->pluck('year')
+            ->toArray();
+
+        return view('index', [
+            'selectedYear' => $year,
+            'availableYears' => $availableYears,
+            'holidays' => $holidays
+        ]);
     }
 }
