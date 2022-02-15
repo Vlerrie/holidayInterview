@@ -64,6 +64,6 @@ class GetYearlyHolidays extends Command
                     'type' => $holiday['type']
                 ]);
         }
-        return "Holidays for $year has been updated";
+        echo "Holidays for $year has been updated";
     }
 }
